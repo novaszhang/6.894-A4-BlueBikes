@@ -19,7 +19,7 @@
     }).addTo(map); 
 
   // load GeoJSON from an external file
-  $.getJSON("map.geojson",function(data){
+  $.getJSON("json/map.geojson",function(data){
     // add GeoJSON layer to the map once the file is loaded
     L.geoJson(data).addTo(map);
   });
