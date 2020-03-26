@@ -1,5 +1,4 @@
 .container-fluid.toggle-bar{
-	position: fixed;
   height: 15%;
   outline: 2px dashed green;
   background: white;
@@ -45,5 +44,3 @@
   opacity: 1; /* Fully shown on mouse-over */
 }
 
-/* Map */
-#mapid { height: 180px; }
