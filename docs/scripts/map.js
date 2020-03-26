@@ -19,7 +19,11 @@
     }).addTo(map); 
 
   // load GeoJSON from an external file
-  $.getJSON("map.geojson",function(data){
+  $.getJSON("data/map.geojson",function(data){
     // add GeoJSON layer to the map once the file is loaded
     L.geoJson(data).addTo(map);
   });
+
+d3.csv("data/start-station.csv", function(data) {
+  console.log(data);
+});
