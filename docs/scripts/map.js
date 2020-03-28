@@ -20,10 +20,6 @@
     minZoom: 9
     }).addTo(map); 
 
-  var margin = {top: 10, right: 20, bottom: 30, left: 50},
-    width = 500 - margin.left - margin.right,
-    height = 420 - margin.top - margin.bottom;
-
   // Add a svg layer to the map
   L.svg().addTo(map); 
 
@@ -31,11 +27,8 @@
   // append the svg object to the body of the page
   var svg = d3.select("#map")
   .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+    .attr("width", "100%")
+    .attr("height", "100%")
 
   $.get( "data/station_info.csv", function(CSVdata) {
      // CSVdata is populated with the file contents
@@ -43,7 +36,8 @@
       console.log(station_info)
 
   // -1- Create a tooltip div that is hidden by default:
-  var tooltip = d3.select("#map")
+  var tooltip = d3
+    .select("#map")
     .append("div")
       .style("opacity", 0)
       .attr("class", "tooltip")
@@ -108,12 +102,6 @@ map.on("moveend", update)
 //Filter data
 
 // Three function that change the tooltip when user hover / move / leave a cell
-/* 
-
-// create a tooltip
-
-
- */ 
 /*
 d3.csv("data/start-station.csv", function(data) {
   console.log(data);
