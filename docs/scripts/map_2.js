@@ -20,69 +20,25 @@
     minZoom: 9
     }).addTo(map); 
 
-  var margin = {top: 10, right: 20, bottom: 30, left: 50},
-    width = 500 - margin.left - margin.right,
-    height = 420 - margin.top - margin.bottom;
-
   // Add a svg layer to the map
-  L.svg().addTo(map); 
-
-  //May need translate + transform
-  // append the svg object to the body of the page
-  var svg = d3.select("#map")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
+  L.svg().addTo(map); //Needed for bubblemap
+  var svg = d3 //Needed for tooltip
+    .select("#map")
+    .append("svg")
 
   $.get( "data/station_info.csv", function(CSVdata) {
      // CSVdata is populated with the file contents
       var station_info = $.csv.toObjects(CSVdata);
       console.log(station_info)
 
-  // -1- Create a tooltip div that is hidden by default:
-  var tooltip = d3.select("#map")
-    .append("div")
-      .style("opacity", 0)
-      .attr("class", "tooltip")
-      .style("background-color", "black")
-      .style("border-radius", "5px")
-      .style("padding", "10px")
-      .style("color", "white")
-      .style("position", "absolute")
-
-  // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
-  var showTooltip = function(d) {
-    tooltip
-      .transition()
-      .duration(200)
-    tooltip
-      .style("opacity", 1)
-      .html("Location: " + d.station_name)
-      .style("left", (d3.mouse(this)[0]+30) + "px")
-      .style("top", (d3.mouse(this)[1]+30) + "px")
-  }
-  var moveTooltip = function(d) {
-    tooltip
-      .style("left", (d3.mouse(this)[0]+30) + "px")
-      .style("top", (d3.mouse(this)[1]+30) + "px")
-  }
-  var hideTooltip = function(d) {
-    tooltip
-      .transition()
-      .duration(200)
-      .style("opacity", 0)
-  }
-
 // Select the svg area and add circles:
-svg // may be an issue
-  .selectAll("circle")
+d3.select("#map")
+  .select("svg")
+  .selectAll("myCircles")
   .data(station_info)
   .enter()
   .append("circle")
-    .attr("class", "bubbles")
+    .attr("id", "circleCustomTooltip")
     .attr("cx", function(d){ return map.latLngToLayerPoint([d.lat, d.lon]).x })
     .attr("cy", function(d){ return map.latLngToLayerPoint([d.lat, d.lon]).y })
     .attr("r", 7)
@@ -90,9 +46,6 @@ svg // may be an issue
     .attr("stroke", "red")
     .attr("stroke-width", 1)
     .attr("fill-opacity", .4)
-  .on("mouseover", showTooltip )
-  .on("mousemove", moveTooltip )
-  .on("mouseleave", hideTooltip )
 
 // Function that update circle position if something change
 function update() {
@@ -108,10 +61,45 @@ map.on("moveend", update)
 //Filter data
 
 // Three function that change the tooltip when user hover / move / leave a cell
-/* 
+/* var mouseover = function(d) {
+  Tooltip
+    .transition()
+    .duration(200)
+  Tooltip
+    .style("opacity", 1)
+    .html(d.station_name + "<br>")
+    .style("left", (d3.mouse(this)[0]+10) + "px")
+    .style("top", (d3.mouse(this)[1]) + "px")
+}
+var mousemove = function(d) {
+  Tooltip
+    .style("left", (d3.mouse(this)[0]+10) + "px")
+    .style("top", (d3.mouse(this)[1]) + "px")
+}
+var mouseleave = function(d) {
+  Tooltip
+    .transition()
+    .duration(200)
+    .style("opacity", 0)
+}
 
 // create a tooltip
+var Tooltip = d3.select("#map") //body not working
+  .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0)
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "2px")
+    .style("border-radius", "5px")
+    .style("padding", "5px")
+    .style("position", "absolute")
 
+
+d3.select("#circleCustomTooltip")
+    .on("mouseover", mouseover)
+    .on("mousemove", mousemove)
+    .on("mouseleave", mouseleave)
 
  */ 
 /*
