@@ -44,6 +44,8 @@
   opacity: 1; /* Fully shown on mouse-over */
 }
 
+/* For bubble-map */
+
 .circles {
   stroke-width: 2px;
   stroke: white;
