@@ -44,3 +44,19 @@
   opacity: 1; /* Fully shown on mouse-over */
 }
 
+.circles {
+  stroke-width: 2px;
+  stroke: white;
+  fill: #3c373d;
+}
+
+.circles:hover {
+  stroke: black;
+  fill: #8c919d;
+
+}
+
+.labels {
+    font-family: sans-serif;
+    font-size: 11px;
+    fill: #3c373d;
