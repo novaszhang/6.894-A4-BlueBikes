@@ -43,14 +43,3 @@
 .slider:hover {
   opacity: 1; /* Fully shown on mouse-over */
 }
-
-/* For bubble-map */
-
-.bubbles {
-  stroke-width: 2px;
-  stroke: white;
-}
-
-.bubbles:hover {
-  stroke: black;
-}
