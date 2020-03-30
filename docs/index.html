@@ -36,8 +36,7 @@
 				<h3 style="padding-top:8px;padding-left:5px">Bluebike Trips in 2019</h3>
 			</div>
 			<div class="row" id="toggles" style="padding:7px">
-				
-				<div class= "col-2" style="padding:10px">
+				<!--<div class= "col-2" style="padding:10px">
 					<input type="date" 
 						id="dateSelect" 
 						name="trip-start"
@@ -45,41 +44,61 @@
 				       	min="2019-01-01" 
 				      	max="2019-12-31"
 				      	onchange="triggerHandler(false,0)">
-				</div>
-				<!-- <div class="btn-group">
-				  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				</div>-->
+				<div class="btn-group">
+				  <button type="button" class="dropbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+				  value="Jan">
 				    Month
 				  </button>
 				  <div class="dropdown-menu">
-				    <a class="dropdown-item" href="#">Action</a>
-				    <a class="dropdown-item" href="#">Another action</a>
-				    <a class="dropdown-item" href="#">Something else here</a>
+				    <a class="dropdown-item" href="#">Jan</a>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Separated link</a>
+				    <a class="dropdown-item" href="#">Feb</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Mar</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Apr</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">May</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Jun</a>
+					<div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Jul</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Aug</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Sep</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Oct</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Nov</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Dec</a>
 				  </div>
 				</div>
 
 				<div class="btn-group">
-				  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  <button type="button" class="dropbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Mon">
 				    Day
 				  </button>
 				  <div class="dropdown-menu">
-				    <option value="Monday" selected>Monday</option>
-				    <option value="Tuesday">Tuesday</option>
-				    <option value="Wednesday">Wednesday</option>
-				    <option value="Thursday">Thursday</option>
-				    <option value="Friday">Friday</option>
-				    <option value="Saturday">Saturday</option>
-				    <option value="Sunday">Sunday</option>
-				    <a class="dropdown-item" href="#">Action</a>
-				    <a class="dropdown-item" href="#">Another action</a>
-				    <a class="dropdown-item" href="#">Something else here</a>
+				    <a class="dropdown-item" href="#">Mon</a>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Separated link</a>
-				  </div> -->
+				    <a class="dropdown-item" href="#">Tue</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Wed</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Thu</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Fri</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Sat</a>
+					<div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Sun</a>
+				  </div> 
 				</div>
 				<div style="padding: 0; text-align: right;" class="col-1">
-					<p>Hour</p>
+					<p>Hour of day</p>
 				</div>
 				<div id="slider-div" class="col-9 align-items-center">
 				    <div id="slider-step"></div></div>
@@ -89,6 +108,8 @@
 		</div>
 
 		<!-- Map -->
+		<br>
+		<br>
 		<div id="map" style="height: 85%; width:100%"/>
 		<!-- sidebar -->
 		<div id="sidebar">
@@ -114,7 +135,7 @@
 		<script src="plugins/leaflet.marker.highlight/index.js"></script>
 		<!-- Sidebar plugin -->
 		<script type="text/javascript" src="plugins/sidebar/L.Control.Sidebar.js"></script>
-		<script src="https://unpkg.com/d3-simple-slider"></script>
+		<script src=https://unpkg.com/d3-simple-slider@1.5.5/dist/d3-simple-slider.min.js></script>
 		<script src="scripts/layout.js"/>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="scripts/map.js"/>

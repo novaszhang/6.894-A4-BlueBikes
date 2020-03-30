@@ -16,6 +16,7 @@ var sliderStep = d3
   .step(1)
   .default(0)
   .on('onchange', val => {
+    //d3.select('p#value-step').text(d3.format("")(sliderStep.value()));
     sliderHandler(val);
   });
 
@@ -61,7 +62,7 @@ function triggerHandler(slide,value){
   //fetching data
   $.get(filename, function(CSVdata) {
     
-  }
+  })
 
 }
 
