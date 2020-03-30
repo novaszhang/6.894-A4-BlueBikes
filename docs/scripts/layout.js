@@ -101,3 +101,6 @@ function sliderHandler(value){
   triggerHandler(true,value); 
 }
 
+function myMonth() {
+  document.getElementById("month").value = "";
+}
