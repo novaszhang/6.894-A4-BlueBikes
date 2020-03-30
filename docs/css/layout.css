@@ -5,11 +5,13 @@
   margin: 0 auto;
 }
 
-.animated-icon{
-  width: 20px;
-  height: 20px;
-  background-color: rgba(255,255,255,0.5);
-  border-radius: 50%;
-  box-shadow: 0px 0px 4px white;
-  transition: all 1s 
+.circle-transition {
+   animation: 1s ease-out 0s 1 fadeIn;
+}
+
+.circle-transition:hover {
+    fill: #800000;
+    stroke: #800000;
+    fill-opacity: 1;
+    transition: all 1s
 }

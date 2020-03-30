@@ -52,17 +52,16 @@
         }
       
         marker = new L
-        .marker([station_info[i].lat,station_info[i].lon], {
+        .circleMarker([station_info[i].lat,station_info[i].lon], {
           radius: 5, //use value
-          color: "#800000", //use value
-          highlight: 'temporary'
+          color: "#FA8072", //use value
+          className: 'circle-transition'
         });
 
         marker.bindTooltip(station_info[i].station_name);
 
         marker.on('mouseover', function(e) {
           this.openPopup();
-          marker.enableTemporaryHighlight();
         })
 
         marker.on('mouseout', function(e) {
