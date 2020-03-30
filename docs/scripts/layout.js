@@ -64,9 +64,13 @@ function triggerHandler(slide,value){
   else{
     hour = sliderStep.value();
   }
-  var date = document.getElementById("dateSelect").value;
-  var month = date.substring(5,7);
-  var day = date.substring(8,10);
+  // var date = document.getElementById("dateSelect").value;
+  // var month = date.substring(5,7);
+  // var day = date.substring(8,10);
+
+  var month = 1;
+  var day = 2;
+  var hour = 14;
   var flow = document.getElementById("flowBtn").innerHTML;
   var filename="";
   if(flow=="Incoming"){
@@ -74,13 +78,25 @@ function triggerHandler(slide,value){
   }else{
     filename="data/start-station.csv";
   }
-  console.log(day)
+  // console.log(day)
   console.log(filename)
 
   //fetching data
-  $.get(filename, function(CSVdata) {
-    
-  })
+  var data_array = {};
+  d3.csv(filename, function(row){
+    return {month:row.month, dow:row.dow, hour:row.hour, numTrips:row.num_trips};
+  }).then(function(data){
+   data_array = data;
+   // const filterTime = ;
+   const arr1 = data_array.filter(d => d.month == month && d.dow == day);
+   const arr2 = arr1.filter(d => d.hour == hour);
+
+   console.log(arr2)
+  });
+
+
+  
+  // console.log(filtered);
 
 }
 

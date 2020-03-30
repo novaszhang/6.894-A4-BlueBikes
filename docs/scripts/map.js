@@ -33,7 +33,6 @@
   $.get( "data/station_info.csv", function(CSVdata) {
      // CSVdata is populated with the file contents
       var station_info = $.csv.toObjects(CSVdata);
-      console.log(station_info)
 
       var markers = L.markerClusterGroup();
 
