@@ -4,3 +4,14 @@
   background: white;
   margin: 0 auto;
 }
+
+.circle-transition {
+   animation: 1s ease-out 0s 1 fadeIn;
+}
+
+.circle-transition:hover {
+    fill: #800000;
+    stroke: #800000;
+    fill-opacity: 1;
+    transition: all 1s
+}
