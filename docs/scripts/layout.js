@@ -6,18 +6,24 @@ for (var i = 0; i <= 23; i++) {
    data.push(i);
 }
 
+var dataTime = d3.range(0, 24).map(function(d) {
+    return new Date(2019, 0, 1, 0+d);
+  });
+console.log(dataTime)
+
 var sliderStep = d3
   .sliderBottom()
-  .min(d3.min(data))
-  .max(d3.max(data))
+  .min(d3.min(dataTime))
+  .max(d3.max(dataTime))
   .width(parentDiv.clientWidth-50)
-  .tickFormat(d3.format(""))
+  .tickFormat(d3.timeFormat("%H"))
+  .tickValues(dataTime)
   .ticks(24)
-  .step(1)
-  .default(0)
+  .step(60 * 60)
+  .default(new Date('Jan 1, 2019 00:00:00'))
   .on('onchange', val => {
-    //d3.select('p#value-step').text(d3.format("")(sliderStep.value()));
-    sliderHandler(val);
+    d3.select('p#value-time').text(d3.timeFormat("%H")(val));
+    //sliderHandler(val);
   });
 
 var gStep = d3
