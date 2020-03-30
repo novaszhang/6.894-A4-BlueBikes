@@ -29,7 +29,6 @@
 
       var markers = L.markerClusterGroup();
 
-
       for (var i = 0; i < station_info.length; i++) {
 
         var MarkerOptions = {
