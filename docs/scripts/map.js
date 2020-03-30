@@ -22,6 +22,8 @@
 
   //Add circle markers to map
   //tool-tip w/ station name
+
+  //Animated icon
   $.get( "data/station_info.csv", function(CSVdata) {
      // CSVdata is populated with the file contents
       var station_info = $.csv.toObjects(CSVdata);
@@ -39,11 +41,21 @@
           opacity: 1,
           fillOpacity: 0.4,
         }
+
+        var MarkerOptions_clicked = {
+          radius: 4,
+          fillColor: "#0163FF",
+          color: "#0163FF",
+          weight: 2,
+          opacity: 1,
+          fillOpacity: 0.4,
+        }
       
         marker = new L
         .circleMarker([station_info[i].lat,station_info[i].lon], {
           radius: 5, //use value
-          color: "#800000", //use value
+          color: "#FA8072", //use value
+          className: 'circle-transition'
         });
 
         marker.bindTooltip(station_info[i].station_name);
@@ -65,5 +77,4 @@
         marker.addTo(map);
       }
       map.addLayer(markers);
-
     });
