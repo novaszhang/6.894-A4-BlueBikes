@@ -31,45 +31,60 @@
 	</title>
 	<body>
 		<div class="toggle-bar container-fluid">
-			<div class="row">
-					<h1>Bluebike Trips in 2019</h1>
+			<div class="row" style="padding:10px;text-align:center">
+				<button id="flowBtn" onclick="clickFlow()" type="button" class="btn btn-primary btn-lg">Incoming</button>
+				<h3 style="padding-top:8px;padding-left:5px">Bluebike Trips in 2019</h3>
 			</div>
-			<div class="row">
-				<div class= "col-1">
-					<div class="dropdown show">
-					  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					    Month
-					  </a>
-
-					  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					    <a class="dropdown-item" href="#">Action</a>
-					    <a class="dropdown-item" href="#">Another action</a>
-					    <a class="dropdown-item" href="#">Something else here</a>
-					  </div>
-					</div>
+			<div class="row" id="toggles" style="padding:7px">
+				
+				<div class= "col-2" style="padding:10px">
+					<input type="date" 
+						id="dateSelect" 
+						name="trip-start"
+				       	value="2019-01-01"
+				       	min="2019-01-01" 
+				      	max="2019-12-31"
+				      	onchange="triggerHandler(false,0)">
 				</div>
-				<div class= "col-1">
-					<div class="dropdown show">
-					  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					    Day
-					  </a>
-
-					  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					    <a class="dropdown-item" href="#">Action</a>
-					    <a class="dropdown-item" href="#">Another action</a>
-					    <a class="dropdown-item" href="#">Something else here</a>
-					  </div>
-					</div>
+				<!-- <div class="btn-group">
+				  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Month
+				  </button>
+				  <div class="dropdown-menu">
+				    <a class="dropdown-item" href="#">Action</a>
+				    <a class="dropdown-item" href="#">Another action</a>
+				    <a class="dropdown-item" href="#">Something else here</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Separated link</a>
+				  </div>
 				</div>
-				<div style="padding:10px;text-align: right;" class="col-1">
-					<p>Hour of Day</p>
+
+				<div class="btn-group">
+				  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				    Day
+				  </button>
+				  <div class="dropdown-menu">
+				    <option value="Monday" selected>Monday</option>
+				    <option value="Tuesday">Tuesday</option>
+				    <option value="Wednesday">Wednesday</option>
+				    <option value="Thursday">Thursday</option>
+				    <option value="Friday">Friday</option>
+				    <option value="Saturday">Saturday</option>
+				    <option value="Sunday">Sunday</option>
+				    <a class="dropdown-item" href="#">Action</a>
+				    <a class="dropdown-item" href="#">Another action</a>
+				    <a class="dropdown-item" href="#">Something else here</a>
+				    <div class="dropdown-divider"></div>
+				    <a class="dropdown-item" href="#">Separated link</a>
+				  </div> -->
+				</div>
+				<div style="padding: 0; text-align: right;" class="col-1">
+					<p>Hour</p>
 				</div>
 				<div id="slider-div" class="col-9 align-items-center">
 				    <div id="slider-step"></div></div>
 				</div>
-				<!-- Example of how you get the value from slider
-				<p id="value-step">Value:</p>
-			-->
+			
 			</div>
 		</div>
 
