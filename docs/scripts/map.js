@@ -20,9 +20,15 @@
     minZoom: 9
     }).addTo(map); 
 
+
+  var sidebar = L.control.sidebar('sidebar', {
+            closeButton: true,
+            position: 'left'
+        });
+  map.addControl(sidebar);
+
   //Add circle markers to map
   //tool-tip w/ station name
-
   //Animated icon
   $.get( "data/station_info.csv", function(CSVdata) {
      // CSVdata is populated with the file contents
@@ -32,30 +38,14 @@
       var markers = L.markerClusterGroup();
 
       for (var i = 0; i < station_info.length; i++) {
-
-        var MarkerOptions = {
-          radius: 4,
-          fillColor: "#0163FF",
-          color: "#0163FF",
-          weight: 2,
-          opacity: 1,
-          fillOpacity: 0.4,
-        }
-
-        var MarkerOptions_clicked = {
-          radius: 4,
-          fillColor: "#0163FF",
-          color: "#0163FF",
-          weight: 2,
-          opacity: 1,
-          fillOpacity: 0.4,
-        }
       
         marker = new L
         .circleMarker([station_info[i].lat,station_info[i].lon], {
-          radius: 5, //use value
+          radius: 7, //use value
           color: "#FA8072", //use value
-          className: 'circle-transition'
+          className: 'circle-transition',
+          opacity: 1,
+          fillOpacity: 0.4,
         });
 
         marker.bindTooltip(station_info[i].station_name);
@@ -68,10 +58,10 @@
           this.closePopup();
         })
 
-        //Show usage stats?
-        //marker.on('click', function(e) {
-        //  //this.
-        //})
+        marker.on('click', function(e) {
+          sidebar.toggle();
+          sidebar.setContent("This is station" + station_info[i].station_name)
+        })
 
         markers.addLayer(marker);
         marker.addTo(map);
