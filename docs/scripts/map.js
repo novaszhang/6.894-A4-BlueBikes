@@ -25,7 +25,6 @@
             closeButton: true,
             position: 'left'
         });
-  map.addControl(sidebar);
 
   //Add circle markers to map
   //tool-tip w/ station name
@@ -59,8 +58,12 @@
         })
 
         marker.on('click', function(e) {
+          
+          //map.removeControl(sidebar);
+          var content = "Bike station: " + station_info[i].station_name.bold();
+          sidebar.setContent(content)
+          //map.addControl(sidebar);
           sidebar.toggle();
-          sidebar.setContent("This is station" + station_info[i].station_name)
         })
 
         markers.addLayer(marker);
@@ -68,3 +71,6 @@
       }
       map.addLayer(markers);
     });
+    map.addControl(sidebar);
+
+
