@@ -36,7 +36,17 @@ function customtimeFormat(date) {
                 : data == 13 ? "1 pm"
                 : data == 23 ? "11 pm"
                 : formatHour(date);
-  }
+}
+
+function customtimeFormat_r() {
+  var data = sliderStep.value
+    return        data.localCompare("midnight") ? 0
+                : data.localCompare("12 noon") ? 12
+                : data.localCompare("1 pm") ? 13
+                : data.localCompare("11 pm") ? 23
+                : data;
+}
+
 
 var gStep = d3
   .select('div#slider-step')
@@ -62,7 +72,7 @@ function triggerHandler(slide,value){
     hour = value;
   }
   else{
-    hour = sliderStep.value();
+    hour = customtimeFormat_r();
   }
   var month = document.getElementById("month"); //month input
   var day = document.getElementById("day"); //day of week input
