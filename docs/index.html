@@ -4,10 +4,10 @@
 	<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 			crossorigin="anonymous"> -->
 		<link
-		 	rel="stylesheet"
-			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-			crossorigin="anonymous"
+		  rel="stylesheet"
+		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		  crossorigin="anonymous"
 		/>
 		<!-- Leaflet for Map -->
 		<link 
@@ -57,14 +57,15 @@
 					  </div>
 					</div>
 				</div>
-
-				<!-- <div class="slidecontainer col-10">
-				  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-				</div> -->
-				<div class="col-10 align-items-center">
-				    <div id="slider-range"></div>
+				<div style="padding:10px;text-align: right;" class="col-1">
+					<p>Hour of Day</p>
 				</div>
-				<p id="value-range">Value:</p>
+				<div id="slider-div" class="col-9 align-items-center">
+				    <div id="slider-step"></div></div>
+				</div>
+				<!-- Example of how you get the value from slider
+				<p id="value-step">Value:</p>
+			-->
 			</div>
 		</div>
 
@@ -86,11 +87,13 @@
 		<script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
 		<!-- Leaflet MakerCluster -->
 		<script src="https://unpkg.com/leaflet.markercluster@1.1.0/dist/leaflet.markercluster.js"></script>
+
 		<script src="https://unpkg.com/d3-simple-slider"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-		<script src="scripts/map.js"/>
 		<script src="scripts/layout.js"/>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="scripts/map.js"/>
+
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	</body>
 

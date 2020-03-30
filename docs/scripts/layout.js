@@ -1,40 +1,33 @@
-// My own range slider
-// var slider = document.getElementById("myRange");
-// var output = document.getElementById("demo");
-// output.innerHTML = slider.value;
+var parentDiv = document.getElementById('slider-step');
 
-// slider.oninput = function() {
-//   output.innerHTML = this.value;
-// }
-var data = [0, 0.005, 0.01, 0.015, 0.02, 0.025];
+var data = [];
 
-var sliderRange = d3
-    .sliderBottom()
-    .min(d3.min(data))
-    .max(d3.max(data))
-    .width(100)
-    .tickFormat(d3.format('.2%'))
-    .ticks(5)
-    .default([0.015, 0.02])
-    .fill('#2196f3')
-    .on('onchange', val => {
-      d3.select('p#value-range').text(val.map(d3.format('.2%')).join('-'));
-    });
+for (var i = 0; i <= 23; i++) {
+   data.push(i);
+}
 
-  var gRange = d3
-    .select('div#slider-range')
-    .append('svg')
-    .attr('width', "100%")
-    .attr('height', "100%")
-    .append('g')
-    .attr('transform', 'translate(30,30)');
+var sliderStep = d3
+  .sliderBottom()
+  .min(d3.min(data))
+  .max(d3.max(data))
+  .width(parentDiv.clientWidth-50)
+  .tickFormat(d3.format(""))
+  .ticks(24)
+  .step(1)
+  .default(0)
+  .on('onchange', val => {
+    d3.select('p#value-step').text(d3.format("")(val));
+  });
 
-  gRange.call(sliderRange);
+var gStep = d3
+  .select('div#slider-step')
+  .append('svg')
+  .attr('width', parentDiv.clientWidth)
+  .attr('height', parentDiv.clientHeight-100)
+  .append('g')
+  .attr('transform', 'translate(30,10)');
 
-  d3.select('p#value-range').text(
-    sliderRange
-      .value()
-      .map(d3.format('.2%'))
-      .join('-')
-  );
+gStep.call(sliderStep);
 
+//This is how you get the value from slider - change to get input stuff
+d3.select('p#value-step').text(d3.format("")(sliderStep.value()));
