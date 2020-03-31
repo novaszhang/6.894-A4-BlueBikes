@@ -46,56 +46,53 @@
 				      	onchange="triggerHandler(false,0)">
 				</div>-->
 				<div class="btn-group">
-				  <button onclick="myFunction()" type="submit" class="dropbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-				  value="Jan">
-				    Month
-				  </button>
+				  <select type="button" id="month" type="submit" class="dropbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+				  value="Jan" onchange="triggerHandler(false,0)">
 				  <div class="dropdown-menu">
-				    <a class="dropdown-item" href="#">Jan</a>
+				    <option class="dropdown-item" value="1">Jan</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Feb</a>
+				    <option class="dropdown-item" value="2">Feb</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Mar</a>
+				    <option class="dropdown-item" value="3">Mar</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Apr</a>
+				    <option class="dropdown-item" value="4">Apr</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">May</a>
+				    <option class="dropdown-item" value="5">May</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Jun</a>
+				    <option class="dropdown-item" value="6">Jun</option>
 					<div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Jul</a>
+				    <option class="dropdown-item" value="7">Jul</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Aug</a>
+				    <option class="dropdown-item" value="8">Aug</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Sep</a>
+				    <option class="dropdown-item" value="9">Sep</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Oct</a>
+				    <option class="dropdown-item" value="10">Oct</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Nov</a>
+				    <option class="dropdown-item" value="11">Nov</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Dec</a>
+				    <option class="dropdown-item" value="12">Dec</option>
 				  </div>
+				  </select>
 				</div>
-
 				<div class="btn-group">
-				  <button type="button" onclick="myFunction()" class="dropbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Mon">
-				    Day
-				  </button>
+				  <select type="button" id="day" class="dropbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Mon" onchange="triggerHandler(false,0)">
 				  <div class="dropdown-menu">
-				    <a class="dropdown-item" href="#">Mon</a>
+				    <option class="dropdown-item" value="1">Mon</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Tue</a>
+				    <option class="dropdown-item" value="2">Tue</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Wed</a>
+				    <option class="dropdown-item" value="3">Wed</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Thu</a>
+				    <option class="dropdown-item" value="4">Thu</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Fri</a>
+				    <option class="dropdown-item" value="5">Fri</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Sat</a>
+				    <option class="dropdown-item" value="6">Sat</option>
 					<div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Sun</a>
-				  </div> 
+				    <option class="dropdown-item" value="7">Sun</option>
+				  </div>
+				  </select> 
 				</div>
 				<div style="padding: 0; text-align: right;" class="col-1">
 					<p>Hour of day</p>

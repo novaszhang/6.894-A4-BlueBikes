@@ -23,20 +23,27 @@ var sliderStep = d3
   .step(1000 * 60 * 60)
   .default(new Date('Jan 1, 2019 00:00:00'))
   .on('onchange', val => {
-    d3.select('p#value-time').text(d3.timeFormat("%H")(val));
-    //sliderHandler(val);
+    sliderHandler(val);
   });
 
 function customtimeFormat(date) {
   var formatHour = d3.timeFormat("%I")
       getHour = d3.timeFormat("%H")
   var data = getHour(date)
-    return        data == 0 ?  "12 am"
+    return        data == 0 ?  "midnight"
                 : data == 12 ? "12 noon"
                 : data == 13 ? "1 pm"
                 : data == 23 ? "11 pm"
+                : formatHour(date);
+}
+
+function customtimeFormat_r(data) {
+    return        data == "midnight" ? 0
+                : data == "12 noon" ? 12
+                : data == "1 pm" ? 13
+                : data == "11 pm" ? 23
                 : data;
-  }
+}
 
 var gStep = d3
   .select('div#slider-step')
@@ -62,28 +69,25 @@ function triggerHandler(slide,value){
     hour = value;
   }
   else{
-    hour = sliderStep.value();
+    hour =  sliderStep.value()
   }
-  // var date = document.getElementById("dateSelect").value;
-  // var month = date.substring(5,7);
-  // var day = date.substring(8,10);
 
 //set these with selection!
   var month = 1;
   var day = 2;
   var hour = 14;
 
-  var flow = document.getElementById("flowBtn").innerHTML;
+  var hour = getHour(hour);
+  var month = document.getElementById("month").value; //month input
+  var day = document.getElementById("day").value; //day of week input
+  var flow = document.getElementById("flowBtn").innerHTML; //incoming/outgoing
   var filename="";
   if(flow=="Incoming"){
     filename="data/incoming_trips.csv";
   }else{
     filename="data/outgoing_trips.csv";
   }
-  // console.log(day)
-  console.log(filename)
 
-  //fetching data
   var data_array = {};
   d3.csv(filename, function(row){
     return {
@@ -106,11 +110,6 @@ function triggerHandler(slide,value){
   }
 
   });
-
-
-  
-  // console.log(filtered);
-
 }
 
 //Change from incoming to outgoing or vice versa
@@ -129,43 +128,3 @@ function clickFlow(){
 function sliderHandler(value){
   triggerHandler(true,value); 
 }
-
-
-/*
-var customTimeFormat = timeFormat([
-  ["1:00 am", function () { return true; }],
-  ["2:00", function (d) { return 1 <= d.getHours() && d.getHours() < 2; }],
-  ["3:00", function (d) { return 2 <= d.getHours() && d.getHours() < 3; }],
-
-  ["4:00", function (d) { return 3 <= d.getHours() && d.getHours() < 4; }],
-  ["5:00", function (d) { return 4 <= d.getHours() && d.getHours() < 5; }],
-
-  ["6:00", function (d) { return 5 <= d.getHours() && d.getHours() < 6; }],
-  ["7:00", function (d) { return 6 <= d.getHours() && d.getHours() < 7; }],
-
-  ["8:00", function (d) { return 7 <= d.getHours() && d.getHours() < 8; }],
-  ["9:00", function (d) { return 8 <= d.getHours() && d.getHours() < 9; }],
-
-  ["10:00", function (d) { return 9 <= d.getHours() && d.getHours() < 10; }],
-  ["11:00", function (d) { return 10 <= d.getHours() && d.getHours() < 11; }],
-
-  ["12 noon", function (d) { return 11 <= d.getHours() && d.getHours() < 12; }],
-  ["1:00 pm", function (d) { return 12 <= d.getHours() && d.getHours() < 13; }],
-
-  ["2:00", function (d) { return 13 <= d.getHours() && d.getHours() < 14; }],
-  ["3:00", function (d) { return 14 <= d.getHours() && d.getHours() < 15; }],
-
-  ["4:00", function (d) { return 15 <= d.getHours() && d.getHours() < 16; }],
-  ["5:00", function (d) { return 16 <= d.getHours() && d.getHours() < 17; }],
-
-  ["6:00", function (d) { return 17 <= d.getHours() && d.getHours() < 18; }],
-  ["7:00", function (d) { return 18 <= d.getHours() && d.getHours() < 19; }],
-
-  ["8:00", function (d) { return 19 <= d.getHours() && d.getHours() < 20; }],
-  ["9:00", function (d) { return 20 <= d.getHours() && d.getHours() < 21; }],
-
-  ["10:00", function (d) { return 21 <= d.getHours() && d.getHours() < 22; }],
-  ["11:00 pm", function (d) { return 22 <= d.getHours() && d.getHours() <== 23; }],
-
-]); */
-

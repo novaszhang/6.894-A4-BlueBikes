@@ -59,7 +59,6 @@
 
         marker.on('click', function(e) {
           sidebar.toggle();
-          sidebar.setContent("This is station" + station_info[i].station_name)
         })
 
         markers.addLayer(marker);
