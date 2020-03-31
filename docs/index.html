@@ -36,8 +36,7 @@
 				<h3 style="padding-top:8px;padding-left:5px">Bluebike Trips in 2019</h3>
 			</div>
 			<div class="row" id="toggles" style="padding:7px">
-				
-				<div class= "col-2" style="padding:10px">
+				<!--<div class= "col-2" style="padding:10px">
 					<input type="date" 
 						id="dateSelect" 
 						name="trip-start"
@@ -45,41 +44,58 @@
 				       	min="2019-01-01" 
 				      	max="2019-12-31"
 				      	onchange="triggerHandler(false,0)">
-				</div>
-				<!-- <div class="btn-group">
-				  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Month
-				  </button>
-				  <div class="dropdown-menu">
-				    <a class="dropdown-item" href="#">Action</a>
-				    <a class="dropdown-item" href="#">Another action</a>
-				    <a class="dropdown-item" href="#">Something else here</a>
-				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Separated link</a>
-				  </div>
-				</div>
-
+				</div>-->
 				<div class="btn-group">
-				  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				    Day
-				  </button>
+				  <select type="button" id="month" type="submit" class="dropbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+				  value="Jan" onchange="triggerHandler(false,0)">
 				  <div class="dropdown-menu">
-				    <option value="Monday" selected>Monday</option>
-				    <option value="Tuesday">Tuesday</option>
-				    <option value="Wednesday">Wednesday</option>
-				    <option value="Thursday">Thursday</option>
-				    <option value="Friday">Friday</option>
-				    <option value="Saturday">Saturday</option>
-				    <option value="Sunday">Sunday</option>
-				    <a class="dropdown-item" href="#">Action</a>
-				    <a class="dropdown-item" href="#">Another action</a>
-				    <a class="dropdown-item" href="#">Something else here</a>
+				    <option class="dropdown-item" value="1">Jan</option>
 				    <div class="dropdown-divider"></div>
-				    <a class="dropdown-item" href="#">Separated link</a>
-				  </div> -->
+				    <option class="dropdown-item" value="2">Feb</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="3">Mar</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="4">Apr</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="5">May</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="6">Jun</option>
+					<div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="7">Jul</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="8">Aug</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="9">Sep</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="10">Oct</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="11">Nov</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="12">Dec</option>
+				  </div>
+				  </select>
+				</div>
+				<div class="btn-group">
+				  <select type="button" id="day" class="dropbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="Mon" onchange="triggerHandler(false,0)">
+				  <div class="dropdown-menu">
+				    <option class="dropdown-item" value="1">Mon</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="2">Tue</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="3">Wed</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="4">Thu</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="5">Fri</option>
+				    <div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="6">Sat</option>
+					<div class="dropdown-divider"></div>
+				    <option class="dropdown-item" value="7">Sun</option>
+				  </div>
+				  </select> 
 				</div>
 				<div style="padding: 0; text-align: right;" class="col-1">
-					<p>Hour</p>
+					<p>Hour of day</p>
 				</div>
 				<div id="slider-div" class="col-9 align-items-center">
 				    <div id="slider-step"></div></div>
@@ -89,6 +105,8 @@
 		</div>
 
 		<!-- Map -->
+		<br>
+		<br>
 		<div id="map" style="height: 85%; width:100%"/>
 		<!-- sidebar -->
 		<div id="sidebar">
@@ -114,7 +132,7 @@
 		<script src="plugins/leaflet.marker.highlight/index.js"></script>
 		<!-- Sidebar plugin -->
 		<script type="text/javascript" src="plugins/sidebar/L.Control.Sidebar.js"></script>
-		<script src="https://unpkg.com/d3-simple-slider"></script>
+		<script src=https://unpkg.com/d3-simple-slider@1.5.5/dist/d3-simple-slider.min.js></script>
 		<script src="scripts/layout.js"/>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="scripts/map.js"/>
