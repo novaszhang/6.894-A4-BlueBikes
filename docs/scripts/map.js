@@ -20,21 +20,18 @@
     minZoom: 9
     }).addTo(map); 
 
+//For marker layers & cluster
+var marker_group = new L.LayerGroup();
+var cluster = L.markerClusterGroup();
 
-  var sidebar = L.control.sidebar('sidebar', {
-            closeButton: true,
-            position: 'left'
-        });
-  map.addControl(sidebar);
+/* Map */
 
-  //Add circle markers to map
+ //Add circle markers to map
   //tool-tip w/ station name
   //Animated icon
   $.get( "data/station_info.csv", function(CSVdata) {
      // CSVdata is populated with the file contents
       var station_info = $.csv.toObjects(CSVdata);
-
-      var markers = L.markerClusterGroup();
 
       for (var i = 0; i < station_info.length; i++) {
       
@@ -57,12 +54,18 @@
           this.closePopup();
         })
 
-        marker.on('click', function(e) {
-          sidebar.toggle();
-        })
-
-        markers.addLayer(marker);
-        marker.addTo(map);
+        cluster.addLayer(marker);
+        marker_group.addLayer(marker);
       }
-      map.addLayer(markers);
+      cluster.addTo(map);
+      marker_group.addTo(map)
     });
+
+    //Remove markers and clusters and resets their layers
+    function remove_markers(){
+      marker_group.remove()
+      cluster.remove()
+
+      marker_group.clearLayers()
+      cluster.clearLayers()
+    }
