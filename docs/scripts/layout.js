@@ -1,16 +1,8 @@
 var parentDiv = document.getElementById('slider-step');
 
-
-
-var data = [];
-for (var i = 0; i <= 23; i++) {
-   data.push(i);
-}
-
 var dataTime = d3.range(0, 24).map(function(d) {
     return new Date(2019, 0, 1, 0+d);
   });
-console.log(dataTime)
 
 var sliderStep = d3
   .sliderBottom()
@@ -22,7 +14,7 @@ var sliderStep = d3
   .ticks(24)
   .step(1000 * 60 * 60)
   .default(new Date('Jan 1, 2019 00:00:00'))
-  .on('onchange', val => {
+  .on('end', val => {
     sliderHandler(val);
   });
 
@@ -58,11 +50,6 @@ gStep.call(sliderStep);
 //This is how you get the value from slider - change to get input stuff
 // d3.select('p#value-step').text(d3.format("")(sliderStep.value()));
 
-
-var end_data = d3.csv("data/end-station.csv")
-var start_data = d3.csv("data/start-station.csv")
-
-
 function triggerHandler(slide,value){
   var hour = 0;
   if(slide==true){
@@ -77,7 +64,7 @@ function triggerHandler(slide,value){
   var day = 2;
   var hour = 14;
 
-  var hour = getHour(hour);
+  var hour = parseInt(getHour(hour));
   var month = document.getElementById("month").value; //month input
   var day = document.getElementById("day").value; //day of week input
   var flow = document.getElementById("flowBtn").innerHTML; //incoming/outgoing
@@ -98,17 +85,15 @@ function triggerHandler(slide,value){
       lon:row.lon,
       lat:row.lat,
       trips:row.trips,
+      name:row.name
     };
   }).then(function(data){
    data_array = data;
    const arr1 = data_array.filter(d => d.month == month && d.day== day);
    const arr2 = arr1.filter(d => d.hour == hour);
-
 //adjust circle size of each station in this for-loop
-  for(var i=0;i<arr2.length;i++){
-   console.log(arr2[i]);
-  }
-
+   remove_markers()
+   map_markers(arr2)
   });
 }
 
@@ -128,3 +113,7 @@ function clickFlow(){
 function sliderHandler(value){
   triggerHandler(true,value); 
 }
+
+
+
+
