@@ -14,7 +14,7 @@ var sliderStep = d3
   .ticks(24)
   .step(1000 * 60 * 60)
   .default(new Date('Jan 1, 2019 00:00:00'))
-  .on('onchange', val => {
+  .on('end', val => {
     sliderHandler(val);
   });
 
@@ -85,12 +85,12 @@ function triggerHandler(slide,value){
       lon:row.lon,
       lat:row.lat,
       trips:row.trips,
+      name:row.name
     };
   }).then(function(data){
    data_array = data;
    const arr1 = data_array.filter(d => d.month == month && d.day== day);
    const arr2 = arr1.filter(d => d.hour == hour);
-
 //adjust circle size of each station in this for-loop
    remove_markers()
    map_markers(arr2)

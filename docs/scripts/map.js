@@ -72,15 +72,15 @@ var cluster = L.markerClusterGroup();
 
     function map_markers(station_info){
       for (var i = 0; i < station_info.length; i++) {
+        radius = 10 * Math.log(parseInt(station_info[i].trips))
         marker = new L
         .circleMarker([station_info[i].lat,station_info[i].lon], {
-          radius: 7, //use value
+          radius: radius, //use value
           color: "#FA8072", //use value
           className: 'circle-transition',
           opacity: 1,
           fillOpacity: 0.4,
         });
-
         marker.bindTooltip(station_info[i].name);
 
         marker.on('mouseover', function(e) {
