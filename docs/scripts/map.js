@@ -69,3 +69,31 @@ var cluster = L.markerClusterGroup();
       marker_group.clearLayers()
       cluster.clearLayers()
     }
+
+    function map_markers(station_info){
+      for (var i = 0; i < station_info.length; i++) {
+        marker = new L
+        .circleMarker([station_info[i].lat,station_info[i].lon], {
+          radius: 7, //use value
+          color: "#FA8072", //use value
+          className: 'circle-transition',
+          opacity: 1,
+          fillOpacity: 0.4,
+        });
+
+        marker.bindTooltip(station_info[i].name);
+
+        marker.on('mouseover', function(e) {
+          this.openPopup();
+        })
+
+        marker.on('mouseout', function(e) {
+          this.closePopup();
+        })
+
+        cluster.addLayer(marker);
+        marker_group.addLayer(marker);
+      }
+      cluster.addTo(map);
+      marker_group.addTo(map)
+    }
