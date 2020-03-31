@@ -22,7 +22,7 @@
 
 //For marker layers & cluster
 var marker_group = new L.LayerGroup();
-var cluster = L.markerClusterGroup();
+//var cluster = L.markerClusterGroup();
 
 /* Map */
 
@@ -64,10 +64,10 @@ var cluster = L.markerClusterGroup();
     //Remove markers and clusters and resets their layers
     function remove_markers(){
       marker_group.remove()
-      cluster.remove()
+      //cluster.remove()
 
       marker_group.clearLayers()
-      cluster.clearLayers()
+      //cluster.clearLayers()
     }
 
     function map_markers(station_info, color){
@@ -91,9 +91,9 @@ var cluster = L.markerClusterGroup();
           this.closePopup();
         })
 
-        cluster.addLayer(marker);
+        //cluster.addLayer(marker);
         marker_group.addLayer(marker);
       }
-      cluster.addTo(map);
+      //cluster.addTo(map);
       marker_group.addTo(map)
     }
