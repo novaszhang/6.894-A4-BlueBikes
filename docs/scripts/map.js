@@ -72,7 +72,7 @@ var cluster = L.markerClusterGroup();
 
     function map_markers(station_info){
       for (var i = 0; i < station_info.length; i++) {
-        radius = 10 * Math.log(parseInt(station_info[i].trips))
+        radius = max(5, 10 * Math.log(parseInt(station_info[i].trips)))
         marker = new L
         .circleMarker([station_info[i].lat,station_info[i].lon], {
           radius: radius, //use value
