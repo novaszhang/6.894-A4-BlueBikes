@@ -22,14 +22,14 @@
 
 //For marker layers & cluster
 var marker_group = new L.LayerGroup();
-var cluster = L.markerClusterGroup();
+//var cluster = L.markerClusterGroup();
 
 /* Map */
 
  //Add circle markers to map
   //tool-tip w/ station name
   //Animated icon
-  $.get( "data/station_info.csv", function(CSVdata) {
+  /*$.get( "data/station_info.csv", function(CSVdata) {
      // CSVdata is populated with the file contents
       var station_info = $.csv.toObjects(CSVdata);
 
@@ -59,29 +59,29 @@ var cluster = L.markerClusterGroup();
       }
       cluster.addTo(map);
       marker_group.addTo(map)
-    });
+    });*/
 
     //Remove markers and clusters and resets their layers
     function remove_markers(){
       marker_group.remove()
-      cluster.remove()
+      //cluster.remove()
 
       marker_group.clearLayers()
-      cluster.clearLayers()
+      //cluster.clearLayers()
     }
 
-    function map_markers(station_info){
+    function map_markers(station_info, color){
       for (var i = 0; i < station_info.length; i++) {
-        radius = max(5, 10 * Math.log(parseInt(station_info[i].trips)))
+        radius = Math.min(45,Math.max(5, 10 * Math.log(parseInt(station_info[i].trips))))
         marker = new L
         .circleMarker([station_info[i].lat,station_info[i].lon], {
           radius: radius, //use value
-          color: "#FA8072", //use value
+          color: color, //use value
           className: 'circle-transition',
           opacity: 1,
           fillOpacity: 0.4,
         });
-        marker.bindTooltip(station_info[i].name);
+        marker.bindTooltip(station_info[i].name + ": " + station_info[i].trips);
 
         marker.on('mouseover', function(e) {
           this.openPopup();
@@ -91,9 +91,9 @@ var cluster = L.markerClusterGroup();
           this.closePopup();
         })
 
-        cluster.addLayer(marker);
+        //cluster.addLayer(marker);
         marker_group.addLayer(marker);
       }
-      cluster.addTo(map);
+      //cluster.addTo(map);
       marker_group.addTo(map)
     }
