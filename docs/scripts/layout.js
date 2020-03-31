@@ -62,17 +62,19 @@ function triggerHandler(slide,value){
 //set these with selection!
   var month = 1;
   var day = 2;
-  var hour = 14;
 
   var hour = parseInt(getHour(hour));
   var month = document.getElementById("month").value; //month input
   var day = document.getElementById("day").value; //day of week input
   var flow = document.getElementById("flowBtn").innerHTML; //incoming/outgoing
   var filename="";
+  var color = "blue"
   if(flow=="Incoming"){
     filename="data/incoming_trips.csv";
+    color = "#FA8072";
   }else{
-    filename="data/outgoing_trips.csv";
+    filename="data/outgoing_trips.csv"
+    color = "#00FF7F";
   }
 
   var data_array = {};
@@ -93,7 +95,9 @@ function triggerHandler(slide,value){
    const arr2 = arr1.filter(d => d.hour == hour);
 //adjust circle size of each station in this for-loop
    remove_markers()
-   map_markers(arr2)
+   if (Array.isArray(arr2) && arr2.length) {
+      map_markers(arr2, color)
+   }
   });
 }
 
