@@ -68,15 +68,17 @@ function triggerHandler(slide,value){
   // var month = date.substring(5,7);
   // var day = date.substring(8,10);
 
+//set these with selection!
   var month = 1;
   var day = 2;
   var hour = 14;
+
   var flow = document.getElementById("flowBtn").innerHTML;
   var filename="";
   if(flow=="Incoming"){
-    filename="data/end-station.csv";
+    filename="data/incoming_trips.csv";
   }else{
-    filename="data/start-station.csv";
+    filename="data/outgoing_trips.csv";
   }
   // console.log(day)
   console.log(filename)
@@ -84,14 +86,25 @@ function triggerHandler(slide,value){
   //fetching data
   var data_array = {};
   d3.csv(filename, function(row){
-    return {month:row.month, dow:row.dow, hour:row.hour, numTrips:row.num_trips};
+    return {
+      month:row.month,
+      day:row.dow, 
+      hour:row.hour,
+      station_id:row.station,
+      lon:row.lon,
+      lat:row.lat,
+      trips:row.trips,
+    };
   }).then(function(data){
    data_array = data;
-   // const filterTime = ;
-   const arr1 = data_array.filter(d => d.month == month && d.dow == day);
+   const arr1 = data_array.filter(d => d.month == month && d.day== day);
    const arr2 = arr1.filter(d => d.hour == hour);
 
-   console.log(arr2)
+//adjust circle size of each station in this for-loop
+  for(var i=0;i<arr2.length;i++){
+   console.log(arr2[i]);
+  }
+
   });
 
 
