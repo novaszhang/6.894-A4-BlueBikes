@@ -23,7 +23,7 @@ var sliderStep = d3
   .step(1000 * 60 * 60)
   .default(new Date('Jan 1, 2019 00:00:00'))
   .on('onchange', val => {
-    d3.select('p#value-time').text(d3.timeFormat("%H")(val));
+    //d3.select('p#value-time').text(customtimeFormat_r(val));
     sliderHandler(val);
   });
 
@@ -38,15 +38,13 @@ function customtimeFormat(date) {
                 : formatHour(date);
 }
 
-function customtimeFormat_r() {
-  var data = sliderStep.value
-    return        data.localCompare("midnight") ? 0
-                : data.localCompare("12 noon") ? 12
-                : data.localCompare("1 pm") ? 13
-                : data.localCompare("11 pm") ? 23
+function customtimeFormat_r(data) {
+    return        data == "midnight" ? 0
+                : data == "12 noon" ? 12
+                : data == "1 pm" ? 13
+                : data == "11 pm" ? 23
                 : data;
 }
-
 
 var gStep = d3
   .select('div#slider-step')
@@ -72,24 +70,26 @@ function triggerHandler(slide,value){
     hour = value;
   }
   else{
-    hour = customtimeFormat_r();
+    hour =  sliderStep.value()
   }
-  var month = document.getElementById("month"); //month input
-  var day = document.getElementById("day"); //day of week input
+  var hour = getHour(hour)
+  var month = document.getElementById("month").value; //month input
+  var day = document.getElementById("day").value; //day of week input
   var flow = document.getElementById("flowBtn").innerHTML; //incoming/outgoing
   var filename="";
   if(flow=="Incoming"){
-    filename="data/end-station.csv";
+    filename="data/incoming_trips.csv";
   }else{
-    filename="data/start-station.csv";
+    filename="data/outgoing_trips.csv";
   }
   console.log(day)
   console.log(month)
   console.log(filename)
+  console.log(hour)
 
   //fetching data
   //$.get(filename, function(CSVdata) {
-    
+  //  
   //})
 
 }
@@ -109,8 +109,4 @@ function clickFlow(){
 
 function sliderHandler(value){
   triggerHandler(true,value); 
-}
-
-function myMonth() {
-  document.getElementById("month").value = "";
 }
