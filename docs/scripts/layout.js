@@ -23,7 +23,6 @@ var sliderStep = d3
   .step(1000 * 60 * 60)
   .default(new Date('Jan 1, 2019 00:00:00'))
   .on('onchange', val => {
-    //d3.select('p#value-time').text(customtimeFormat_r(val));
     sliderHandler(val);
   });
 
@@ -72,7 +71,13 @@ function triggerHandler(slide,value){
   else{
     hour =  sliderStep.value()
   }
-  var hour = getHour(hour)
+
+//set these with selection!
+  var month = 1;
+  var day = 2;
+  var hour = 14;
+
+  var hour = getHour(hour);
   var month = document.getElementById("month").value; //month input
   var day = document.getElementById("day").value; //day of week input
   var flow = document.getElementById("flowBtn").innerHTML; //incoming/outgoing
@@ -82,16 +87,29 @@ function triggerHandler(slide,value){
   }else{
     filename="data/outgoing_trips.csv";
   }
-  console.log(day)
-  console.log(month)
-  console.log(filename)
-  console.log(hour)
 
-  //fetching data
-  //$.get(filename, function(CSVdata) {
-  //  
-  //})
+  var data_array = {};
+  d3.csv(filename, function(row){
+    return {
+      month:row.month,
+      day:row.dow, 
+      hour:row.hour,
+      station_id:row.station,
+      lon:row.lon,
+      lat:row.lat,
+      trips:row.trips,
+    };
+  }).then(function(data){
+   data_array = data;
+   const arr1 = data_array.filter(d => d.month == month && d.day== day);
+   const arr2 = arr1.filter(d => d.hour == hour);
 
+//adjust circle size of each station in this for-loop
+  for(var i=0;i<arr2.length;i++){
+   console.log(arr2[i]);
+  }
+
+  });
 }
 
 //Change from incoming to outgoing or vice versa
