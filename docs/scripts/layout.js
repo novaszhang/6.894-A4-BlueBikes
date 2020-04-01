@@ -17,22 +17,21 @@ var sliderStep = d3
   .on('end', val => {
     sliderHandler(val);
   });
-console.log("helloooo")
+
 function customtimeFormat(date) {
   var formatHour = d3.timeFormat("%I")
       getHour = d3.timeFormat("%H")
   var data = getHour(date)
-    return        data == 0 ?  "midnight"
-                : data == 12 ? "12 noon"
-                : data == 13 ? "1 pm"
-                : data == 23 ? "11 pm"
+    return        data == 0 ?  "12 AM"
+                : data == 12 ? "12 PM"
+                : data == 13 ? "1 PM"
+                : data == 23 ? "11 PM"
                 : formatHour(date);
 }
 
 function customtimeFormat_r(data) {
     return        data == "midnight" ? 0
                 : data == "12 noon" ? 12
-                : data == "1 pm" ? 13
                 : data == "11 pm" ? 23
                 : data;
 }
@@ -47,9 +46,6 @@ var gStep = d3
 
 gStep.call(sliderStep);
 
-//This is how you get the value from slider - change to get input stuff
-// d3.select('p#value-step').text(d3.format("")(sliderStep.value()));
-
 function triggerHandler(slide,value){
   var hour = 0;
   if(slide==true){
@@ -58,10 +54,6 @@ function triggerHandler(slide,value){
   else{
     hour =  sliderStep.value()
   }
-
-//set these with selection!
-  var month = 1;
-  var day = 2;
 
   var hour = parseInt(getHour(hour));
   var month = document.getElementById("month").value; //month input
@@ -90,14 +82,14 @@ function triggerHandler(slide,value){
       name:row.name
     };
   }).then(function(data){
-   data_array = data;
-   const arr1 = data_array.filter(d => d.month == month && d.day== day);
-   const arr2 = arr1.filter(d => d.hour == hour);
-//adjust circle size of each station in this for-loop
-   remove_markers()
-   if (Array.isArray(arr2) && arr2.length) {
-      map_markers(arr2, color)
-   }
+     data_array = data;
+     const arr1 = data_array.filter(d => d.month == month && d.day== day);
+     const arr2 = arr1.filter(d => d.hour == hour);
+    //adjust circle size of each station in this for-loop
+     remove_markers()
+     if (Array.isArray(arr2) && arr2.length) {
+        map_markers(arr2, color)
+     }
   });
 }
 
@@ -119,7 +111,3 @@ function clickFlow(){
 function sliderHandler(value){
   triggerHandler(true,value); 
 }
-
-
-
-
