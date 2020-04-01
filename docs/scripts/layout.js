@@ -17,7 +17,7 @@ var sliderStep = d3
   .on('end', val => {
     sliderHandler(val);
   });
-
+console.log("helloooo")
 function customtimeFormat(date) {
   var formatHour = d3.timeFormat("%I")
       getHour = d3.timeFormat("%H")
@@ -71,10 +71,10 @@ function triggerHandler(slide,value){
   var color = "blue"
   if(flow=="Incoming"){
     filename="data/incoming_trips.csv";
-    color = "#FA8072";
+    color = "#d6b018";
   }else{
     filename="data/outgoing_trips.csv"
-    color = "#00FF7F";
+    color = "#32a63b";
   }
 
   var data_array = {};
@@ -107,8 +107,10 @@ function clickFlow(){
   var newFlow ="";
   if(currFlow == "Incoming"){
     newFlow="Outgoing";
+    document.getElementById("flowBtn").className = "outgoing btn btn-primary btn-lg ";
   }else {
-    newFlow="Incoming"
+    newFlow="Incoming";
+    document.getElementById("flowBtn").className = "incoming btn btn-primary btn-lg ";
   }
   document.getElementById("flowBtn").innerHTML=newFlow;
   triggerHandler(false,0);
